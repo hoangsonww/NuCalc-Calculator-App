@@ -1,0 +1,22 @@
+{
+  "name": "NuCalc Pro",
+  "short_name": "NuCalc",
+  "description": "A sleek, modern calculator web app with offline support and installable PWA features.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2E2E3A",
+  "theme_color": "#2E2E3A",
+  "icons": [
+    {
+      "src": "img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

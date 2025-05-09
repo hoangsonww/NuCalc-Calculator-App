@@ -1,0 +1,20 @@
+{
+  "name": "COMP 426 a02 Container",
+  "dockerFile": "Dockerfile",
+
+  // Forward ports
+  "forwardPorts": [4260],
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
+    }
+  }
+}

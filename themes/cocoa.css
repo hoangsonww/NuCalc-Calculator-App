@@ -1,0 +1,19 @@
+#calculator {
+  background-color: #2e2e3a;
+}
+
+.calculator-display-row {
+  background-color: #1f1f28;
+}
+
+.calculator-button {
+  background-color: #3e3e5a;
+}
+
+.system-button {
+  background-color: #5a5a7a;
+}
+
+.operation-button {
+  background-color: #ff6b6b;
+}

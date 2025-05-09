@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>NuCalc Pro - Calculate Everything Effortlessly</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="NuCalc Pro – a sleek, modern, and powerful calculator web app with PWA support."
+    />
+    <meta
+      name="keywords"
+      content="calculator, web app, PWA, NuCalc, arithmetic, modern calculator"
+    />
+    <meta name="author" content="Your Name or Company" />
+    <meta name="theme-color" content="#2E2E3A" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="NuCalc Pro - Calculate Everything Effortlessly"
+    />
+    <meta
+      property="og:description"
+      content="NuCalc Pro – a sleek, modern, and powerful calculator web app with PWA support."
+    />
+    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/img/og-image.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="NuCalc Pro - Calculate Everything Effortlessly"
+    />
+    <meta
+      name="twitter:description"
+      content="NuCalc Pro – a sleek, modern, and powerful calculator web app with PWA support."
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourdomain.com/img/twitter-card.png"
+    />
+
+    <!-- Apple PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NuCalc Pro" />
+    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#2E2E3A" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="themes/cocoa.css" />
+    <script type="module" src="/src/main.ts"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="calculator">
+        <div class="calculator-display-row">
+          <div id="previous-row">
+            <span id="previous-value"></span>
+            <span id="active-operation"></span>
+          </div>
+          <div id="display">0</div>
+        </div>
+        <div class="calculator-button-row">
+          <div class="calculator-button system-button" id="clear-button">C</div>
+          <div class="calculator-button system-button" id="sign-button">±</div>
+          <div class="calculator-button system-button" id="backspace-button">
+            &lt;
+          </div>
+          <div class="calculator-button operation-button" id="divide-button">
+            ÷
+          </div>
+        </div>
+        <div class="calculator-button-row">
+          <div class="calculator-button" id="7-button">7</div>
+          <div class="calculator-button" id="8-button">8</div>
+          <div class="calculator-button" id="9-button">9</div>
+          <div class="calculator-button operation-button" id="multiply-button">
+            ×
+          </div>
+        </div>
+        <div class="calculator-button-row">
+          <div class="calculator-button" id="4-button">4</div>
+          <div class="calculator-button" id="5-button">5</div>
+          <div class="calculator-button" id="6-button">6</div>
+          <div class="calculator-button operation-button" id="subtract-button">
+            -
+          </div>
+        </div>
+        <div class="calculator-button-row">
+          <div class="calculator-button" id="1-button">1</div>
+          <div class="calculator-button" id="2-button">2</div>
+          <div class="calculator-button" id="3-button">3</div>
+          <div class="calculator-button operation-button" id="add-button">
+            +
+          </div>
+        </div>
+        <div class="calculator-button-row">
+          <div class="calculator-button" id=".-button">.</div>
+          <div class="calculator-button" id="0-button">0</div>
+          <div class="calculator-button operation-button" id="equals-button">
+            =
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
