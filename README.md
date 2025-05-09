@@ -15,6 +15,10 @@ A sleek, modern, and powerful web-based calculator with PWA support. NuCalc Pro 
 
 **Live Web App:** [https://nucalc-app.vercel.app/](https://nucalc-app.vercel.app/).
 
+<p align="center">
+  <img src="img/ui.png" alt="NuCalc Screenshot" width="100%"/>
+</p>
+
 ---
 
 ## Features
