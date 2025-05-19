@@ -1,0 +1,10 @@
+development:
+  clients:
+    default:
+      database: nucalc_pro_dev
+      hosts:
+        - localhost:27017
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
