@@ -11,6 +11,8 @@ A sleek, modern, and powerful web-based calculator with PWA support. NuCalc Pro 
   <img src="https://img.shields.io/badge/CSS3-^3.0.0-blue?style=for-the-badge&logo=css3" alt="CSS3"/>
   <img src="https://img.shields.io/badge/PWA-^1.0.0-blue?style=for-the-badge&logo=pwa" alt="PWA"/>
   <img src="https://img.shields.io/badge/Vercel-^1.0.0-blue?style=for-the-badge&logo=vercel" alt="Vercel"/>
+  <img src="https://img.shields.io/badge/Ruby-^3.0.0-blue?style=for-the-badge&logo=ruby" alt="Ruby"/>
+  <img src="https://img.shields.io/badge/Rails-^7.0.0-blue?style=for-the-badge&logo=ruby-on-rails" alt="Rails"/>
 </p>
 
 **Live Web App:** [https://nucalc-app.vercel.app/](https://nucalc-app.vercel.app/).
@@ -184,6 +186,40 @@ A sleek, modern, and powerful web-based calculator with PWA support. NuCalc Pro 
 
 - **Fonts**: Change the Google Fonts link in the `<head>` of `index.html`.
 - **Icons**: Replace `img/icons/icon-*.png` to update PWA icon sets.
+
+---
+
+## Sample Ruby on Rails API
+
+This project includes a sample Ruby on Rails API for demonstration purposes. The API is not fully functional and is provided as a reference for integrating with a backend service.
+
+To run the API, follow these steps:
+
+1. Ensure you have Ruby and Rails installed on your machine.
+
+2. Navigate to the `api` directory:
+
+   ```bash
+   cd api
+   ```
+   
+3. Install the required gems:
+
+   ```bash
+    bundle install
+    ```
+   
+4. Start the Rails server:
+
+    ```bash
+    rails server
+    ```
+   
+5. The API will be available at `http://localhost:3000`.
+
+6. You can test the API endpoints using tools like Postman or cURL.
+
+7. The API is a simple RESTful service that can be used to demonstrate how to integrate with a backend service.
 
 ---
 
