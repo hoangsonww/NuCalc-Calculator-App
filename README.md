@@ -202,19 +202,19 @@ To run the API, follow these steps:
    ```bash
    cd api
    ```
-   
+
 3. Install the required gems:
 
    ```bash
     bundle install
-    ```
-   
+   ```
+
 4. Start the Rails server:
 
-    ```bash
-    rails server
-    ```
-   
+   ```bash
+   rails server
+   ```
+
 5. The API will be available at `http://localhost:3000`.
 
 6. You can test the API endpoints using tools like Postman or cURL.

@@ -1,14 +1,35 @@
 import { Calculator } from "./calculator";
 import { SupportedOperation } from "./operation";
+import { initializePWA } from "./pwaHandler";
+
+// Initialize PWA functionality
+initializePWA();
 
 const calculator = new Calculator();
 
 /**
- * Updates the calculator’s display elements to reflect the current state.
+ * Updates the calculator's display elements to reflect the current state.
+ * Shows error messages if present and updates ARIA attributes for accessibility.
  * @returns {void}
  */
 const updateDisplay = (): void => {
   const display = document.getElementById("display")!;
+  const errorMessageEl = document.getElementById("error-message")!;
+
+  // Update error state
+  const error = calculator.getError();
+  if (error) {
+    errorMessageEl.textContent = error;
+    errorMessageEl.style.display = "block";
+    display.classList.add("error");
+    display.setAttribute("aria-invalid", "true");
+  } else {
+    errorMessageEl.textContent = "";
+    errorMessageEl.style.display = "none";
+    display.classList.remove("error");
+    display.setAttribute("aria-invalid", "false");
+  }
+
   display.textContent = calculator.display;
 
   const previousValueDisplay = document.getElementById("previous-value")!;

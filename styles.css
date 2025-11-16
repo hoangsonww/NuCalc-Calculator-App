@@ -118,4 +118,192 @@ body {
     calc((48vh - 48px) / 6),
     calc((48vh - 48px) / 6)
   );
+  transition: color 0.3s ease;
+}
+
+#display.error {
+  color: #ff6b6b;
+  animation: shake 0.4s ease-in-out;
+}
+
+.error-message {
+  display: none;
+  text-align: center;
+  color: #ff6b6b;
+  font-size: clamp(
+    calc((218px - 48px) / 12),
+    calc((48vh - 48px) / 12),
+    calc((48vh - 48px) / 12)
+  );
+  font-weight: 600;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PWA Notifications */
+.pwa-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  animation: slideDown 0.3s ease-out;
+  max-width: 90%;
+  width: 400px;
+}
+
+.pwa-notification.pwa-offline {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.pwa-notification.pwa-online {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.pwa-notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pwa-notification-text {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pwa-notification-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pwa-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Nunito", sans-serif;
+}
+
+.pwa-btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.pwa-btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pwa-btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pwa-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Install Button */
+.pwa-install-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: slideUp 0.3s ease-out;
+  font-family: "Nunito", sans-serif;
+}
+
+.pwa-install-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.pwa-install-button:active {
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive PWA notifications */
+@media (max-width: 480px) {
+  .pwa-notification {
+    width: calc(100% - 40px);
+    top: 10px;
+  }
+
+  .pwa-install-button {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
 }
