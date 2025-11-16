@@ -107,10 +107,10 @@ export function initializePWA(): void {
     onOfflineReady() {
       console.log("App is ready to work offline");
     },
-    onRegistered(registration) {
+    onRegistered(registration: ServiceWorkerRegistration | undefined) {
       console.log("Service Worker registered:", registration);
     },
-    onRegisterError(error) {
+    onRegisterError(error: Error) {
       console.error("Service Worker registration failed:", error);
     },
   });
