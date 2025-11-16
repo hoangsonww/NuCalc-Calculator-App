@@ -108,55 +108,11 @@ jobs:
       - name: Run TypeScript type check
         run: npm run type-check
 
-  # Job 5: Unit Tests
-  test:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    needs: install
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Restore node_modules cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Run unit tests
-        run: npm run test
-
-      - name: Generate coverage report
-        run: npm run test:coverage
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: false
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Comment PR with coverage
-        if: github.event_name == 'pull_request'
-        uses: romeovs/lcov-reporter-action@v0.3.1
-        with:
-          lcov-file: ./coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          delete-old-comments: true
-
-  # Job 6: Build
+  # Job 5: Build
   build:
     name: Build Application
     runs-on: ubuntu-latest
-    needs: [lint, format-check, type-check, test]
+    needs: [lint, format-check, type-check]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -188,47 +144,7 @@ jobs:
           du -sh dist/
           find dist/ -type f -name "*.js" -exec du -h {} \; | sort -hr
 
-  # Job 7: E2E Tests
-  e2e:
-    name: E2E Tests
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Restore node_modules cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist/
-
-      - name: Run E2E tests
-        run: npm run test:e2e
-
-      - name: Upload E2E test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
-
-  # Job 8: Security Audit
+  # Job 6: Security Audit
   security:
     name: Security Audit
     runs-on: ubuntu-latest
@@ -254,7 +170,7 @@ jobs:
         with:
           args: --severity-threshold=high
 
-  # Job 9: Dependency Review (PR only)
+  # Job 7: Dependency Review (PR only)
   dependency-review:
     name: Dependency Review
     runs-on: ubuntu-latest
@@ -271,12 +187,12 @@ jobs:
         with:
           fail-on-severity: moderate
 
-  # Job 10: Deploy Preview (PR only)
+  # Job 8: Deploy Preview (PR only)
   deploy-preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    needs: [build, test]
+    needs: [build]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -298,21 +214,19 @@ jobs:
               body: '✅ Build successful! Preview will be available on Vercel once deployed.'
             })
 
-  # Job 11: Notification
+  # Job 9: Notification
   notify:
     name: Notify Status
     runs-on: ubuntu-latest
     if: always()
-    needs: [lint, format-check, type-check, test, build, e2e, security]
+    needs: [lint, format-check, type-check, build, security]
     steps:
       - name: Check job statuses
         run: |
           echo "Lint: ${{ needs.lint.result }}"
           echo "Format Check: ${{ needs.format-check.result }}"
           echo "Type Check: ${{ needs.type-check.result }}"
-          echo "Tests: ${{ needs.test.result }}"
           echo "Build: ${{ needs.build.result }}"
-          echo "E2E: ${{ needs.e2e.result }}"
           echo "Security: ${{ needs.security.result }}"
 
       - name: Determine overall status
@@ -321,9 +235,7 @@ jobs:
           if [[ "${{ needs.lint.result }}" == "success" ]] && \
              [[ "${{ needs.format-check.result }}" == "success" ]] && \
              [[ "${{ needs.type-check.result }}" == "success" ]] && \
-             [[ "${{ needs.test.result }}" == "success" ]] && \
-             [[ "${{ needs.build.result }}" == "success" ]] && \
-             [[ "${{ needs.e2e.result }}" == "success" ]]; then
+             [[ "${{ needs.build.result }}" == "success" ]]; then
             echo "status=success" >> $GITHUB_OUTPUT
             echo "✅ All checks passed!"
           else

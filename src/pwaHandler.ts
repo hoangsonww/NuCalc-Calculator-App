@@ -9,7 +9,9 @@ import { registerSW } from "virtual:pwa-register";
  * Shows a notification to the user about app updates
  * @param updateSW - Function to trigger the service worker update
  */
-function showUpdateNotification(updateSW: (reloadPage?: boolean) => Promise<void>): void {
+function showUpdateNotification(
+  updateSW: (reloadPage?: boolean) => Promise<void>,
+): void {
   const notification = document.createElement("div");
   notification.id = "pwa-update-notification";
   notification.className = "pwa-notification";

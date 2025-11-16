@@ -49,6 +49,7 @@ MONGODB_URI=mongodb://username:password@host:port/database
 ```
 
 Generate a secure JWT secret:
+
 ```bash
 openssl rand -hex 32
 ```
@@ -62,16 +63,19 @@ Vercel provides the easiest deployment with automatic PWA support.
 #### Via Vercel CLI
 
 1. Install Vercel CLI:
+
    ```bash
    npm install -g vercel
    ```
 
 2. Login to Vercel:
+
    ```bash
    vercel login
    ```
 
 3. Deploy:
+
    ```bash
    vercel
    ```
@@ -87,6 +91,7 @@ Vercel provides the easiest deployment with automatic PWA support.
 2. Click "New Project"
 3. Import your GitHub repository
 4. Configure:
+
    - Framework Preset: Vite
    - Build Command: `npm run build`
    - Output Directory: `dist`
@@ -97,6 +102,7 @@ Vercel provides the easiest deployment with automatic PWA support.
 #### Configuration
 
 Create `vercel.json` (optional):
+
 ```json
 {
   "buildCommand": "npm run build",
@@ -104,9 +110,7 @@ Create `vercel.json` (optional):
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "headers": [
     {
       "source": "/sw.js",
@@ -143,16 +147,19 @@ Create `vercel.json` (optional):
 #### Via Netlify CLI
 
 1. Install Netlify CLI:
+
    ```bash
    npm install -g netlify-cli
    ```
 
 2. Login:
+
    ```bash
    netlify login
    ```
 
 3. Initialize:
+
    ```bash
    netlify init
    ```
@@ -168,6 +175,7 @@ Create `vercel.json` (optional):
 2. Click "Add new site" > "Import an existing project"
 3. Connect your Git provider
 4. Configure build settings:
+
    - Build command: `npm run build`
    - Publish directory: `dist`
    - Node version: 18
@@ -177,6 +185,7 @@ Create `vercel.json` (optional):
 #### Configuration
 
 Create `netlify.toml`:
+
 ```toml
 [build]
   command = "npm run build"
@@ -204,11 +213,13 @@ Create `netlify.toml`:
 ### GitHub Pages
 
 1. Install gh-pages:
+
    ```bash
    npm install --save-dev gh-pages
    ```
 
 2. Add to `package.json`:
+
    ```json
    {
      "homepage": "https://yourusername.github.io/NuCalc-Calculator-App",
@@ -220,14 +231,16 @@ Create `netlify.toml`:
    ```
 
 3. Update `vite.config.ts`:
+
    ```typescript
    export default defineConfig({
-     base: '/NuCalc-Calculator-App/',
+     base: "/NuCalc-Calculator-App/",
      // ... rest of config
    });
    ```
 
 4. Deploy:
+
    ```bash
    npm run deploy
    ```
@@ -239,6 +252,7 @@ Create `netlify.toml`:
 #### Dockerfile
 
 Create `Dockerfile`:
+
 ```dockerfile
 # Build stage
 FROM node:18-alpine AS build
@@ -265,6 +279,7 @@ CMD ["nginx", "-g", "daemon off;"]
 #### nginx.conf
 
 Create `nginx.conf`:
+
 ```nginx
 server {
     listen 80;
@@ -314,8 +329,9 @@ docker run -d -p 8080:80 nucalc-pro
 #### Docker Compose
 
 Create `docker-compose.yml`:
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -326,6 +342,7 @@ services:
 ```
 
 Run:
+
 ```bash
 docker-compose up -d
 ```
@@ -343,6 +360,7 @@ docker-compose up -d
 #### Environment Setup
 
 1. Set environment variables:
+
    ```bash
    export JWT_SECRET="your-secure-secret-here"
    export ALLOWED_ORIGINS="https://your-frontend-domain.com"
@@ -351,6 +369,7 @@ docker-compose up -d
    ```
 
 2. Install dependencies:
+
    ```bash
    cd ruby
    bundle install --without development test
@@ -364,16 +383,19 @@ docker-compose up -d
 #### Heroku Deployment
 
 1. Create Heroku app:
+
    ```bash
    heroku create your-app-name
    ```
 
 2. Add MongoDB addon:
+
    ```bash
    heroku addons:create mongolab
    ```
 
 3. Set environment variables:
+
    ```bash
    heroku config:set JWT_SECRET="your-secret"
    heroku config:set ALLOWED_ORIGINS="https://your-domain.com"
@@ -409,6 +431,7 @@ docker-compose up -d
 ### Monitoring
 
 Recommended tools:
+
 - **Error Tracking**: Sentry, Rollbar
 - **Analytics**: Google Analytics, Plausible
 - **Performance**: Lighthouse CI, WebPageTest
@@ -425,12 +448,14 @@ Recommended tools:
 ### Continuous Deployment
 
 The project includes GitHub Actions workflow that:
+
 - Runs tests on every push
 - Checks code quality
 - Builds the application
 - Can be extended for automatic deployment
 
 To enable auto-deployment to Vercel:
+
 1. Get Vercel token from dashboard
 2. Add to GitHub secrets as `VERCEL_TOKEN`
 3. Add deployment step to `.github/workflows/ci.yml`
@@ -462,14 +487,17 @@ To enable auto-deployment to Vercel:
 If deployment fails:
 
 ### Vercel
+
 ```bash
 vercel rollback
 ```
 
 ### Netlify
+
 Use the Netlify dashboard to revert to a previous deployment
 
 ### Docker
+
 ```bash
 docker tag nucalc-pro:latest nucalc-pro:backup
 # Then redeploy previous version
@@ -478,6 +506,7 @@ docker tag nucalc-pro:latest nucalc-pro:backup
 ## Support
 
 For deployment issues:
+
 1. Check this guide
 2. Review platform documentation
 3. Check GitHub Issues

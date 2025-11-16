@@ -29,12 +29,14 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 1. Fork the repository on GitHub
 2. Clone your fork locally:
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/NuCalc-Calculator-App.git
    cd NuCalc-Calculator-App
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -125,6 +127,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 ```
 
 **Types:**
+
 - `feat`: A new feature
 - `fix`: A bug fix
 - `docs`: Documentation changes
@@ -137,6 +140,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/) speci
 - `build`: Build system changes
 
 **Examples:**
+
 ```
 feat: add calculation history feature
 fix(calculator): resolve division by zero error
@@ -167,6 +171,7 @@ src/
 - Test edge cases and error conditions
 
 Example:
+
 ```typescript
 describe("Calculator", () => {
   let calculator: Calculator;
@@ -197,6 +202,7 @@ describe("Calculator", () => {
 ### Pull Request Process
 
 1. Ensure all tests pass:
+
    ```bash
    npm run validate
    ```
@@ -206,6 +212,7 @@ describe("Calculator", () => {
 3. Commit your changes with conventional commit messages
 
 4. Push to your fork:
+
    ```bash
    git push origin feature/your-feature-name
    ```
